@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kritika Singh — UI/UX Designer from Anand, Gujarat.">
+<title>Kritika Singh · UI/UX Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#F4FAFD;--bg2:#E8F3FA;--bg3:#D4EAF7;
+  --card:#FFFFFF;--border:rgba(58,127,191,0.13);
+  --text:#0D1E30;--text2:#3A5A7A;--text3:#7AAAC8;
+  --a1:#4A90C4;--a2:#7AB8D8;--a3:#C8E4F4;--a4:#1A4A7A;
+  --shine:rgba(100,170,220,0.13);
+}
+body.dk{
+  --bg:#07111A;--bg2:#0C1B28;--bg3:#112438;
+  --card:#0C1B28;--border:rgba(100,170,220,0.12);
+  --text:#E6F3FC;--text2:#7AAAC8;--text3:#3A6A9A;
+  --a3:rgba(74,144,196,0.15);--shine:rgba(100,170,220,0.08);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);transition:background .45s,color .45s;overflow-x:hidden;font-size:15px;line-height:1.7;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg2);}
+::-webkit-scrollbar-thumb{background:var(--a1);border-radius:4px;}
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#4A90C4,#7AB8D8,#A8D4F0);width:0%;z-index:9999;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:998;display:flex;justify-content:space-between;align-items:center;padding:0 2.5rem;height:64px;background:rgba(244,250,253,0.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .45s;}
+body.dk nav{background:rgba(7,17,26,0.93);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--text);text-decoration:none;}
+.logo span{color:var(--a1);}
+.nav-links{display:flex;align-items:center;gap:1.6rem;}
+.nav-links a{font-size:.73rem;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color .2s;font-weight:500;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:var(--a1);transition:width .25s;}
+.nav-links a:hover{color:var(--a1);}
+.nav-links a:hover::after{width:100%;}
+.tog{background:none;border:1.5px solid var(--border);border-radius:30px;padding:.3rem 1rem;font-size:.72rem;color:var(--text3);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.tog:hover{border-color:var(--a1);color:var(--a1);}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.ham span{width:22px;height:2px;background:var(--text3);border-radius:2px;}
+.mob{display:none;position:fixed;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);padding:1.5rem 2rem;z-index:997;flex-direction:column;gap:1rem;}
+.mob.open{display:flex;}
+.mob a{font-size:.82rem;letter-spacing:.09em;text-transform:uppercase;color:var(--text3);text-decoration:none;padding:.35rem 0;border-bottom:1px solid var(--border);}
+.mob a:hover{color:var(--a1);}
+
+/* HERO */
+#hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:1fr 400px;max-width:1080px;margin:0 auto;padding:0 2.5rem;align-items:center;gap:3rem;}
+.pill{display:inline-flex;align-items:center;gap:.55rem;background:var(--a3);border:1px solid rgba(74,144,196,.2);border-radius:30px;padding:.32rem 1rem .32rem .6rem;margin-bottom:2.2rem;}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--a1);animation:blink 2.2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.8);}}
+.pill-txt{font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--a1);font-weight:600;}
+.hero-h{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5.5rem);font-weight:700;line-height:1.0;color:var(--text);margin-bottom:.6rem;}
+.hero-h em{font-style:italic;color:var(--a1);}
+.hero-role{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:1.4rem;font-weight:500;}
+.hero-bio{font-size:.95rem;color:var(--text2);line-height:1.9;max-width:420px;margin-bottom:2rem;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem;}
+.htag{font-size:.68rem;padding:.28rem .8rem;border:1px solid var(--border);border-radius:20px;color:var(--text3);background:var(--bg2);font-weight:500;transition:all .2s;}
+.htag:hover{border-color:var(--a1);color:var(--a1);}
+.ctas{display:flex;gap:.9rem;flex-wrap:wrap;}
+.bp{background:linear-gradient(135deg,#4A90C4,#2E78B0);color:#fff;padding:.82rem 2rem;border-radius:10px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;text-decoration:none;display:inline-block;transition:transform .2s,opacity .2s;}
+.bp:hover{transform:translateY(-3px);opacity:.92;}
+.bo{background:none;color:var(--text);padding:.82rem 2rem;border-radius:10px;border:1.5px solid var(--border);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;text-decoration:none;display:inline-block;transition:all .2s;}
+.bo:hover{border-color:var(--a1);color:var(--a1);}
+.hero-r{position:relative;height:540px;}
+.profile-card{position:absolute;right:0;top:50%;transform:translateY(-50%);width:330px;background:var(--card);border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(74,144,196,.08);}
+.pc-banner{height:90px;background:linear-gradient(135deg,#A8D4EC 0%,#7AB8D8 40%,#4A90C4 100%);position:relative;}
+body.dk .pc-banner{background:linear-gradient(135deg,#0A1E3A 0%,#1A3A5A 40%,#2A5A8A 100%);}
+.pc-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(255,255,255,.18) 1px,transparent 1px),radial-gradient(circle at 80% 20%,rgba(255,255,255,.1) 1px,transparent 1px);background-size:20px 20px,30px 30px;}
+.pc-av{position:absolute;bottom:-26px;left:1.4rem;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#4A90C4,#1A4A7A);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;border:3px solid var(--card);}
+.pc-body{padding:2.2rem 1.4rem 1.4rem;}
+.pc-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--text);}
+.pc-sub{font-size:.72rem;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.2rem;}
+.pc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.3rem;}
+.pcs{background:var(--bg2);border-radius:10px;padding:.65rem .5rem;text-align:center;}
+.pcs-n{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--a1);}
+.pcs-l{font-size:.6rem;color:var(--text3);letter-spacing:.04em;text-transform:uppercase;margin-top:1px;line-height:1.3;}
+.pc-div{height:1px;background:var(--border);margin-bottom:1.1rem;}
+.sm-sk{display:flex;align-items:center;gap:.7rem;margin-bottom:.65rem;}
+.sm-sk:last-child{margin-bottom:0;}
+.sm-nm{font-size:.73rem;color:var(--text2);width:65px;flex-shrink:0;}
+.sm-bar{flex:1;height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;}
+.sm-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#4A90C4,#7AB8D8);width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1);}
+.sm-pct{font-size:.65rem;color:var(--text3);width:26px;text-align:right;}
+.fbadge{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.55rem .9rem;display:flex;align-items:center;gap:.6rem;box-shadow:0 4px 16px rgba(74,144,196,.08);}
+.fb-l{left:-50px;top:40px;}
+.fb-r{left:-35px;bottom:90px;}
+.fbi{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;}
+.fb-nm{font-size:.72rem;font-weight:600;color:var(--text);}
+.fb-sb{font-size:.6rem;color:var(--text3);}
+
+/* SHARED */
+.sec{max-width:900px;margin:0 auto;padding:5.5rem 2.5rem;}
+.slabel{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--a1);margin-bottom:.55rem;font-weight:600;}
+.sh{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3rem);font-weight:700;line-height:1.1;color:var(--text);}
+.sh em{font-style:italic;color:var(--a1);}
+.ssub{font-size:.92rem;color:var(--text2);line-height:1.85;margin-top:.8rem;}
+.rdiv{display:flex;align-items:center;gap:1rem;max-width:900px;margin:0 auto;padding:0 2.5rem;}
+.rd-line{flex:1;height:1px;background:var(--border);}
+.rd-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:50%;font-size:.65rem;color:var(--a1);background:var(--bg2);}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:260px 1fr;gap:3.5rem;align-items:start;margin-top:3rem;}
+.about-img{border-radius:20px;background:linear-gradient(160deg,var(--a3) 0%,var(--bg3) 100%);aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:1px solid var(--border);overflow:hidden;}
+.about-mono{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:700;color:var(--a1);opacity:.3;}
+.about-chip{position:absolute;bottom:1rem;left:1rem;right:1rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.75rem 1rem;}
+.ac-name{font-weight:600;font-size:.92rem;color:var(--text);}
+.ac-role{font-size:.72rem;color:var(--text3);}
+.skill-pills{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.5rem;}
+.sp{padding:.3rem .85rem;border:1px solid var(--border);border-radius:20px;font-size:.74rem;color:var(--text2);display:flex;align-items:center;gap:.45rem;background:var(--bg2);transition:all .2s;}
+.sp:hover{border-color:var(--a1);color:var(--a1);}
+.sp-dot{width:5px;height:5px;border-radius:50%;background:var(--a1);}
+
+/* EXPERIENCE */
+.exp-wrap{display:flex;flex-direction:column;gap:1.5rem;margin-top:3rem;}
+.exp-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow .25s,transform .25s;}
+.exp-card:hover{box-shadow:0 8px 32px rgba(74,144,196,.1);transform:translateY(-2px);}
+.exp-card-header{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;padding:1.4rem 1.6rem;}
+.exp-num{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#4A90C4,#2E78B0);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0;}
+.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.15rem;}
+.exp-org{font-size:.72rem;font-weight:600;color:var(--a1);letter-spacing:.05em;text-transform:uppercase;}
+.exp-date-badge{font-size:.68rem;color:var(--text3);background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:.25rem .75rem;white-space:nowrap;}
+.exp-card-body{border-top:1px solid var(--border);padding:1.2rem 1.6rem;}
+.exp-hl{border-left:3px solid var(--a1);border-radius:0 8px 8px 0;background:var(--shine);padding:.5rem .9rem;margin-bottom:.9rem;font-size:.82rem;color:var(--text2);line-height:1.7;}
+.exp-hl b{color:var(--a1);font-weight:600;}
+.exp-p{font-size:.84rem;color:var(--text2);line-height:1.82;margin-bottom:1rem;}
+.exp-chips{display:flex;flex-wrap:wrap;gap:.4rem;}
+.chip{font-size:.66rem;padding:.22rem .65rem;border:1px solid var(--border);border-radius:20px;color:var(--text3);}
+
+/* PROJECTS — with real image galleries */
+.pcard{border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:1.5rem;background:var(--card);transition:transform .28s,border-color .28s,box-shadow .28s;}
+.pcard:hover{transform:translateY(-5px);border-color:rgba(74,144,196,.35);box-shadow:0 20px 50px rgba(74,144,196,.1);}
+.proj-header{padding:1.5rem 1.8rem 1rem;display:flex;align-items:flex-start;gap:1rem;}
+.proj-num-badge{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#4A90C4,#2E78B0);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;flex-shrink:0;margin-top:.2rem;}
+.ptitle{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:.35rem;}
+.pdesc{font-size:.86rem;color:var(--text2);line-height:1.75;margin-bottom:1rem;}
+.pmeta{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.8rem;}
+.mc{font-size:.68rem;color:var(--text3);border:1px solid var(--border);border-radius:20px;padding:.2rem .62rem;}
+
+/* IMAGE GALLERY */
+.gallery{padding:0 1.8rem 1.2rem;}
+.gallery-label{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--a1);margin-bottom:.7rem;font-weight:600;}
+.gallery-grid{display:grid;gap:.6rem;}
+.gallery-grid.g2{grid-template-columns:1fr 1fr;}
+.gallery-grid.g3{grid-template-columns:1fr 1fr 1fr;}
+.gallery-grid.g4{grid-template-columns:1fr 1fr 1fr 1fr;}
+.gimg{width:100%;border-radius:10px;object-fit:cover;cursor:pointer;transition:transform .25s,box-shadow .25s;border:1px solid var(--border);display:block;}
+.gimg:hover{transform:scale(1.02);box-shadow:0 8px 24px rgba(74,144,196,.15);}
+.gimg-tall{aspect-ratio:16/9;}
+.gimg-sq{aspect-ratio:4/3;}
+.gimg-port{aspect-ratio:3/4;}
+
+/* PDF DOWNLOAD BUTTON */
+.pdf-row{padding:.8rem 1.8rem 1.2rem;display:flex;gap:.8rem;flex-wrap:wrap;}
+.pdf-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;font-size:.78rem;color:var(--text2);text-decoration:none;transition:all .2s;font-weight:500;}
+.pdf-btn:hover{border-color:var(--a1);color:var(--a1);background:var(--a3);}
+.pdf-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;}
+
+/* CASE STUDY TOGGLE */
+.rmb{background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--a1);display:flex;align-items:center;gap:.35rem;padding:0 1.8rem 1.2rem;font-weight:600;}
+.rmb .ar{transition:transform .3s;}
+.rmb.op .ar{transform:rotate(180deg);}
+.cexp{max-height:0;overflow:hidden;transition:max-height .55s ease;border-top:1px solid var(--border);}
+.cexp.op{max-height:900px;}
+.cin{padding:1.8rem;}
+.cstep{margin-bottom:1.4rem;}
+.csl{font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:var(--a1);margin-bottom:.35rem;font-weight:600;}
+.cstep p{font-size:.84rem;color:var(--text2);line-height:1.8;}
+
+/* LIGHTBOX */
+#lightbox{display:none;position:fixed;inset:0;background:rgba(7,17,26,.92);z-index:9000;align-items:center;justify-content:center;padding:2rem;}
+#lightbox.show{display:flex;}
+#lightbox img{max-width:90vw;max-height:88vh;border-radius:12px;object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,.5);}
+#lb-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;}
+
+/* PROCESS */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem;}
+.pstep{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.2rem;text-align:center;transition:transform .25s,box-shadow .25s;}
+.pstep:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(74,144,196,.1);}
+.pstep-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--a1);opacity:.18;line-height:1;margin-bottom:.5rem;}
+.pstep-icon{width:42px;height:42px;border-radius:12px;background:var(--a3);display:flex;align-items:center;justify-content:center;margin:0 auto .9rem;border:1px solid rgba(74,144,196,.2);}
+body.dk .pstep-icon{background:rgba(74,144,196,.12);}
+.pstep-icon svg{width:20px;height:20px;}
+.pstep-title{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.4rem;}
+.pstep-desc{font-size:.75rem;color:var(--text3);line-height:1.6;}
+
+/* SKILLS */
+.sk2col{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;}
+.sk-row{margin-bottom:1.7rem;}
+.sk-hd{display:flex;justify-content:space-between;margin-bottom:.45rem;}
+.sk-nm{font-size:.88rem;color:var(--text);font-weight:500;}
+.sk-pc{font-size:.78rem;color:var(--text3);}
+.sk-bg{height:5px;background:var(--bg3);border-radius:3px;}
+.sk-fill{height:5px;border-radius:3px;background:linear-gradient(90deg,#4A90C4,#7AB8D8);width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1);}
+.tools-sec{margin-top:3rem;}
+.tools-lbl{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:.9rem;font-weight:600;}
+.tools-row{display:flex;gap:1rem;flex-wrap:wrap;}
+.tool-card{display:flex;align-items:center;gap:.85rem;padding:.9rem 1.4rem;border:1.5px solid var(--border);border-radius:14px;background:var(--card);transition:all .25s;}
+.tool-card:hover{border-color:var(--a1);transform:translateY(-3px);box-shadow:0 10px 30px rgba(74,144,196,.1);}
+.ti{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;}
+.tn{font-size:.9rem;font-weight:600;color:var(--text);}
+.ts{font-size:.68rem;color:var(--text3);}
+
+/* ACHIEVEMENTS */
+.awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem;}
+.award-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem;text-align:center;transition:transform .25s,box-shadow .25s;}
+.award-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(74,144,196,.1);}
+.award-icon{width:48px;height:48px;border-radius:14px;background:var(--a3);display:flex;align-items:center;justify-content:center;margin:0 auto .9rem;border:1px solid rgba(74,144,196,.15);}
+body.dk .award-icon{background:rgba(74,144,196,.1);}
+.award-icon svg{width:22px;height:22px;}
+.award-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.3rem;}
+.award-sub{font-size:.75rem;color:var(--text3);line-height:1.55;}
+
+/* TESTIMONIALS */
+.testi-bg{background:var(--bg2);}
+.testi-inner{max-width:900px;margin:0 auto;padding:5.5rem 2.5rem;}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:3rem;}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.6rem;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden;}
+.tcard::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:6rem;line-height:1;color:var(--a1);opacity:.08;position:absolute;top:-.5rem;left:1rem;pointer-events:none;}
+.tcard:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(74,144,196,.1);}
+.tstar{display:flex;gap:3px;margin-bottom:.9rem;}
+.star{width:10px;height:10px;border-radius:50%;background:var(--a2);opacity:.85;}
+.tquote{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--text);line-height:1.72;margin-bottom:1.3rem;position:relative;}
+.tauthor{display:flex;align-items:center;gap:.85rem;}
+.tav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--a3),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--a1);border:1.5px solid rgba(74,144,196,.2);}
+.tname{font-size:.85rem;font-weight:600;color:var(--text);}
+.trole{font-size:.72rem;color:var(--text3);}
+
+/* CTA BANNER */
+.cta-banner{background:linear-gradient(135deg,#4A90C4 0%,#2E78B0 50%,#1A4A7A 100%);border-radius:20px;padding:3rem;text-align:center;position:relative;overflow:hidden;max-width:900px;margin:3rem auto 0;}
+.cta-banner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 10% 20%,rgba(255,255,255,.09) 1px,transparent 1px),radial-gradient(circle at 90% 80%,rgba(255,255,255,.06) 1px,transparent 1px);background-size:25px 25px,35px 35px;}
+.cta-h{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:#fff;margin-bottom:.6rem;position:relative;}
+.cta-h em{font-style:italic;opacity:.85;}
+.cta-p{font-size:.9rem;color:rgba(255,255,255,.78);margin-bottom:1.8rem;position:relative;}
+.cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;position:relative;}
+.cta-bw{background:#fff;color:#1A4A7A;padding:.82rem 2rem;border-radius:10px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;text-decoration:none;display:inline-block;transition:transform .2s,opacity .2s;}
+.cta-bw:hover{transform:translateY(-2px);opacity:.92;}
+.cta-bo{background:none;color:#fff;padding:.82rem 2rem;border-radius:10px;border:2px solid rgba(255,255,255,.4);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;text-decoration:none;display:inline-block;transition:all .2s;}
+.cta-bo:hover{border-color:#fff;background:rgba(255,255,255,.1);}
+
+/* CONTACT */
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:3rem;}
+.cl-links{display:flex;flex-direction:column;gap:.8rem;margin-top:1.8rem;}
+.cl{display:flex;align-items:center;gap:.95rem;padding:.95rem 1.2rem;border:1px solid var(--border);border-radius:13px;color:var(--text);text-decoration:none;transition:all .22s;background:var(--card);}
+.cl:hover{border-color:var(--a1);transform:translateX(5px);box-shadow:0 8px 24px rgba(74,144,196,.1);}
+.cl-ic{width:40px;height:40px;border-radius:10px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:var(--text3);}
+.cl strong{display:block;font-size:.88rem;font-weight:600;color:var(--text);}
+.cl span{font-size:.73rem;color:var(--text3);}
+.cl-acc{background:linear-gradient(135deg,#4A90C4,#2E78B0);border-color:transparent;}
+.cl-acc .cl-ic{background:rgba(255,255,255,.2);color:#fff;}
+.cl-acc strong,.cl-acc span{color:#fff;}
+.cl-acc span{opacity:.82;}
+.cl-acc:hover{box-shadow:0 10px 30px rgba(74,144,196,.3);}
+.fwrap{display:flex;flex-direction:column;gap:.9rem;}
+.fl label{display:block;font-size:.68rem;color:var(--text3);letter-spacing:.09em;text-transform:uppercase;margin-bottom:.35rem;font-weight:600;}
+.fl input,.fl textarea{width:100%;padding:.78rem 1rem;border:1.5px solid var(--border);border-radius:10px;background:var(--bg2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.87rem;outline:none;transition:border-color .2s,background .2s;}
+.fl input:focus,.fl textarea:focus{border-color:var(--a1);background:var(--card);}
+.fl textarea{height:95px;resize:none;}
+
+/* FOOTER */
+.footer-wrap{border-top:1px solid var(--border);max-width:900px;margin:0 auto;padding:2rem 2.5rem;}
+.footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--text);text-decoration:none;}
+.footer-logo span{color:var(--a1);}
+.footer-nav{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.footer-nav a{font-size:.72rem;color:var(--text3);text-decoration:none;letter-spacing:.07em;text-transform:uppercase;transition:color .2s;}
+.footer-nav a:hover{color:var(--a1);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;border-top:1px solid var(--border);padding-top:1.2rem;}
+.fc{font-size:.72rem;color:var(--text3);}
+.fc span{color:var(--a1);}
+.footer-socials{display:flex;gap:.8rem;}
+.fsoc{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:var(--text3);text-decoration:none;transition:all .2s;}
+.fsoc:hover{border-color:var(--a1);color:var(--a1);}
+#btt{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#4A90C4,#2E78B0);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;z-index:500;box-shadow:0 4px 16px rgba(74,144,196,.35);}
+#btt.show{opacity:1;transform:translateY(0);}
+#btt svg{width:16px;height:16px;}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .65s,transform .65s;}
+.fade.v{opacity:1;transform:translateY(0);}
+
+@media(max-width:860px){
+  #hero{grid-template-columns:1fr;min-height:auto;padding-top:3rem;padding-bottom:3rem;}
+  .hero-r{display:none;}
+  .about-grid,.sk2col,.cg,.testi-grid,.process-grid,.awards-grid{grid-template-columns:1fr;}
+  .process-grid{grid-template-columns:1fr 1fr;}
+  .awards-grid{grid-template-columns:1fr 1fr;}
+  .exp-card-header{grid-template-columns:auto 1fr;gap:.8rem;}
+  .exp-date-badge{display:none;}
+  .ham{display:flex;}
+  .nav-links a:not(:last-child){display:none;}
+  .sec,.testi-inner{padding:4rem 1.5rem;}
+  .rdiv{padding:0 1.5rem;}
+  .gallery-grid.g3,.gallery-grid.g4{grid-template-columns:1fr 1fr;}
+  .cta-banner{margin:3rem 1.5rem 0;padding:2rem 1.5rem;}
+}
+@media(max-width:480px){
+  nav{padding:0 1.2rem;}
+  .process-grid,.awards-grid{grid-template-columns:1fr;}
+  .gallery-grid.g2,.gallery-grid.g3,.gallery-grid.g4{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="lightbox" onclick="closeLB()"><button id="lb-close" onclick="closeLB()">×</button><img id="lb-img" src="" alt=""></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="logo">Kritika<span>.</span></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#exp">Experience</a>
+    <a href="#work">Work</a>
+    <a href="#process">Process</a>
+    <a href="#skills">Skills</a>
+    <a href="#testi">Reviews</a>
+    <a href="#contact">Contact</a>
+    <button class="tog" onclick="document.body.classList.toggle('dk')">◑ Theme</button>
+    <div class="ham" onclick="document.getElementById('mob').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="#about" onclick="this.closest('.mob').classList.remove('open')">About</a>
+  <a href="#exp" onclick="this.closest('.mob').classList.remove('open')">Experience</a>
+  <a href="#work" onclick="this.closest('.mob').classList.remove('open')">Work</a>
+  <a href="#skills" onclick="this.closest('.mob').classList.remove('open')">Skills</a>
+  <a href="#testi" onclick="this.closest('.mob').classList.remove('open')">Reviews</a>
+  <a href="#contact" onclick="this.closest('.mob').classList.remove('open')">Contact</a>
+</div>
+
+<!-- HERO -->
+<div id="hero">
+  <div>
+    <div class="pill fade"><div class="dot"></div><span class="pill-txt">Open to opportunities · Anand, Gujarat</span></div>
+    <h1 class="hero-h fade">Crafting<br><em>beautiful</em><br>experiences</h1>
+    <p class="hero-role fade">UI / UX Designer</p>
+    <p class="hero-bio fade">I'm Kritika Singh — a designer who has led visual communication for institutions, publications, and live events at MBIT. I craft clean, purposeful, and visually compelling design using Figma and Canva.</p>
+    <div class="hero-tags fade">
+      <span class="htag">T&amp;P Design Head · MBIT</span>
+      <span class="htag">Chronicles Annual Report</span>
+      <span class="htag">Publication Head · MBIT</span>
+      <span class="htag">Margdarshan Event</span>
+    </div>
+    <div class="ctas fade">
+      <a href="#work" class="bp">View My Work</a>
+      <a href="#contact" class="bo">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-r fade">
+    <div class="fbadge fb-l"><div class="fbi" style="background:#1E1E1E;color:#A259FF;">F</div><div><div class="fb-nm">Figma</div><div class="fb-sb">UI Design</div></div></div>
+    <div class="fbadge fb-r"><div class="fbi" style="background:#00C4CC;color:#fff;font-size:.6rem;">Ca</div><div><div class="fb-nm">Canva</div><div class="fb-sb">Visual Design</div></div></div>
+    <div class="profile-card">
+      <div class="pc-banner"><div class="pc-pattern"></div><div class="pc-av">KS</div></div>
+      <div class="pc-body">
+        <div class="pc-name">Kritika Singh</div>
+        <div class="pc-sub">UI/UX Designer · Anand, GJ</div>
+        <div class="pc-stats">
+          <div class="pcs"><div class="pcs-n">4</div><div class="pcs-l">Roles</div></div>
+          <div class="pcs"><div class="pcs-n">3+</div><div class="pcs-l">Projects</div></div>
+          <div class="pcs"><div class="pcs-n">1</div><div class="pcs-l">Publication</div></div>
+        </div>
+        <div class="pc-div"></div>
+        <div id="hskills">
+          <div class="sm-sk"><span class="sm-nm">Canva</span><div class="sm-bar"><div class="sm-fill" data-w="92"></div></div><span class="sm-pct">92%</span></div>
+          <div class="sm-sk"><span class="sm-nm">Visual UI</span><div class="sm-bar"><div class="sm-fill" data-w="80"></div></div><span class="sm-pct">80%</span></div>
+          <div class="sm-sk"><span class="sm-nm">Figma</span><div class="sm-bar"><div class="sm-fill" data-w="72"></div></div><span class="sm-pct">72%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="rdiv"><div class="rd-line"></div><div class="rd-icon">✦</div><div class="rd-line"></div></div>
+<div class="sec" id="about">
+  <div class="slabel fade">About Me</div>
+  <h2 class="sh fade">Design is how it <em>works</em>,<br>not just how it looks.</h2>
+  <div class="about-grid">
+    <div class="fade">
+      <div class="about-img">
+        <div class="about-mono">KS</div>
+        <div class="about-chip"><div class="ac-name">Kritika Singh</div><div class="ac-role">UI/UX Designer · Anand, Gujarat</div></div>
+      </div>
+    </div>
+    <div class="fade">
+      <p class="ssub">I'm Kritika Singh, a UI/UX designer passionate about creating experiences that are both beautiful and purposeful. My design journey began at MBIT where I led visual design for the T&amp;P Cell, Publications, and major college events — building a deep understanding of design under pressure, for real audiences.</p>
+      <p class="ssub" style="margin-top:.9rem;">I believe every pixel should earn its place. Whether designing a poster that represents the college to corporate recruiters, laying out an annual report, or prototyping a Figma interface — I bring the same care for hierarchy, consistency, and visual clarity.</p>
+      <div class="skill-pills" style="margin-top:1.8rem;">
+        <div class="sp"><div class="sp-dot"></div>Visual Design</div>
+        <div class="sp"><div class="sp-dot"></div>Brand Communication</div>
+        <div class="sp"><div class="sp-dot"></div>UI Design · Figma</div>
+        <div class="sp"><div class="sp-dot"></div>Publication Design</div>
+        <div class="sp"><div class="sp-dot"></div>Event Branding</div>
+        <div class="sp"><div class="sp-dot"></div>Poster &amp; Banner Design</div>
+        <div class="sp"><div class="sp-dot"></div>Wireframing</div>
+        <div class="sp"><div class="sp-dot"></div>Design Leadership</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="rdiv"><div class="rd-line"></div><div class="rd-icon">✦</div><div class="rd-line"></div></div>
+<div class="sec" id="exp">
+  <div class="slabel fade">Real-World Roles</div>
+  <h2 class="sh fade">Experience &amp; <em>Leadership</em></h2>
+  <p class="ssub fade" style="max-width:540px;margin-bottom:0;">Four hands-on design leadership roles at MBIT — each with clear responsibilities, real deliverables, and measurable impact.</p>
+  <div class="exp-wrap">
+    <div class="exp-card fade">
+      <div class="exp-card-header">
+        <div class="exp-num">01</div>
+        <div><div class="exp-role">Design Head Coordinator</div><div class="exp-org">Training &amp; Placement Cell · MBIT</div></div>
+        <div class="exp-date-badge">2023 – 2024</div>
+      </div>
+      <div class="exp-card-body">
+        <div class="exp-hl"><b>Led all visual design</b> for MBIT's T&amp;P Cell — the most visible design role interfacing with corporate recruiters and students.</div>
+        <p class="exp-p">Designed every banner, poster, and graphic for placement drives, company visits, pre-placement talks, and recruitment announcements. Maintained a consistent, professional visual identity representing the college to top companies.</p>
+        <div class="exp-chips"><span class="chip">Banner Design</span><span class="chip">Poster Design</span><span class="chip">Canva</span><span class="chip">Institutional Branding</span><span class="chip">Deadline Management</span></div>
+      </div>
+    </div>
+    <div class="exp-card fade">
+      <div class="exp-card-header">
+        <div class="exp-num">02</div>
+        <div><div class="exp-role">Publication Head Coordinator</div><div class="exp-org">MBIT Publications · Chronicles Annual Report</div></div>
+        <div class="exp-date-badge">2023 – 2024</div>
+      </div>
+      <div class="exp-card-body">
+        <div class="exp-hl"><b>Designed and produced</b> the Chronicles — MBIT's annual news report from layout planning to final print-ready output.</div>
+        <p class="exp-p">Owned the complete visual design — layout planning, typographic hierarchy, image curation, section design, and final print production. Managed the design timeline, coordinated with writers and editors to deliver on schedule.</p>
+        <div class="exp-chips"><span class="chip">Annual Report</span><span class="chip">Editorial Layout</span><span class="chip">Typography</span><span class="chip">Print Design</span><span class="chip">Canva · Figma</span></div>
+      </div>
+    </div>
+    <div class="exp-card fade">
+      <div class="exp-card-header">
+        <div class="exp-num">03</div>
+        <div><div class="exp-role">Design Team Coordinator</div><div class="exp-org">MBIT Design Team</div></div>
+        <div class="exp-date-badge">2023 – 2024</div>
+      </div>
+      <div class="exp-card-body">
+        <div class="exp-hl"><b>Coordinated MBIT's college-wide design team</b> — delegating tasks, reviewing work, and maintaining quality across all departments.</div>
+        <p class="exp-p">Oversaw creative output across multiple departments and events. Briefed team members, reviewed designs, ensured visual consistency, and managed simultaneous project timelines.</p>
+        <div class="exp-chips"><span class="chip">Team Leadership</span><span class="chip">Design Review</span><span class="chip">Project Management</span><span class="chip">Visual Consistency</span></div>
+      </div>
+    </div>
+    <div class="exp-card fade">
+      <div class="exp-card-header">
+        <div class="exp-num">04</div>
+        <div><div class="exp-role">Design Coordinator</div><div class="exp-org">Margdarshan Career Guidance Event · TPC</div></div>
+        <div class="exp-date-badge">2023 – 2024</div>
+      </div>
+      <div class="exp-card-body">
+        <div class="exp-hl"><b>Created the complete visual identity</b> for Margdarshan — TPC's flagship career guidance and mentorship event.</div>
+        <p class="exp-p">Designed full event branding across digital and physical touchpoints — Instagram posts, WhatsApp graphics, banners, standees, and on-stage backdrops — cohesively and on-brand.</p>
+        <div class="exp-chips"><span class="chip">Event Branding</span><span class="chip">Digital + Print</span><span class="chip">Canva</span><span class="chip">Social Media Graphics</span><span class="chip">Identity Design</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS WITH REAL IMAGES -->
+<div class="rdiv"><div class="rd-line"></div><div class="rd-icon">✦</div><div class="rd-line"></div></div>
+<div class="sec" id="work">
+  <div class="slabel fade">Selected Work</div>
+  <h2 class="sh fade">Featured <em>Projects</em></h2>
+  <p class="ssub fade" style="margin-bottom:2.5rem;">Real designs I created for MBIT — click any image to enlarge, or expand the case study to read the full design process.</p>
+
+  <!-- PROJECT 1: TPC -->
+  <div class="pcard fade">
+    <div class="proj-header">
+      <div class="proj-num-badge">01</div>
+      <div style="flex:1;">
+        <div class="ptitle">TPC Visual Communication System</div>
+        <p class="pdesc">All banners, posters, social media posts, and promotional graphics I designed as Design Head Coordinator for MBIT's Training &amp; Placement Cell — representing the college to 78+ corporate recruiters.</p>
+        <div class="pmeta">
+          <span class="mc">Visual Design</span><span class="mc">Canva</span><span class="mc">Institutional Branding</span><span class="mc">Print + Digital</span><span class="mc">Social Media</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery-label">Design Gallery — Click to enlarge</div>
+      <div class="gallery-grid g2" style="margin-bottom:.6rem;">
+        <img class="gimg gimg-tall" src="img_recruiter.jpg" alt="Our Recruiters Banner" onclick="openLB(this.src)">
+        <img class="gimg gimg-tall" src="img_donut.jpg" alt="Graduate Placement Trends Infographic" onclick="openLB(this.src)">
+      </div>
+      <div class="gallery-grid g3" style="margin-bottom:.6rem;">
+        <img class="gimg gimg-sq" src="img_ibm.jpg" alt="IBM SkillsBuild AI Certification Post" onclick="openLB(this.src)">
+        <img class="gimg gimg-sq" src="img_microsoft_post.jpg" alt="Microsoft Training Post" onclick="openLB(this.src)">
+        <img class="gimg gimg-sq" src="img_workshop.jpg" alt="One Day Workshop Poster" onclick="openLB(this.src)">
+      </div>
+      <div class="gallery-grid g2">
+        <img class="gimg gimg-tall" src="img_faculty.jpg" alt="TPC Team Poster" onclick="openLB(this.src)">
+        <img class="gimg gimg-tall" src="img_microsoft_banner.jpg" alt="Microsoft Training Banner" onclick="openLB(this.src)">
+      </div>
+    </div>
+    <div class="pdf-row">
+      <a href="annual_report_2024_25.pdf" class="pdf-btn" target="_blank">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        View Placement Glossy PDF
+      </a>
+    </div>
+    <button class="rmb" id="b1" onclick="tc('e1','b1')">Read full case study <span class="ar">↓</span></button>
+    <div class="cexp" id="e1">
+      <div class="cin">
+        <div class="cstep"><div class="csl">The Challenge</div><p>The T&amp;P Cell needed professional, consistent visual materials for every placement activity — company drives, pre-placement talks, offer announcements — that looked credible to both students and corporate visitors, produced quickly under tight deadlines.</p></div>
+        <div class="cstep"><div class="csl">My Approach</div><p>Established a fixed visual language for TPC — locked color palette, typography, and logo placement rules. Created reusable Canva templates so updates could be made rapidly without redesigning from scratch for every new event or company visit.</p></div>
+        <div class="cstep"><div class="csl">Design Decisions</div><p>Chose clean, corporate-leaning aesthetics. Prioritized hierarchy: company name → role/event → date/venue → contact. Strong contrast and minimal clutter so information reads instantly on both screens and printed standees. Maintained MBIT and CVM University brand guidelines throughout.</p></div>
+        <div class="cstep"><div class="csl">Outcome &amp; Learnings</div><p>Successfully delivered design support across a full placement season with 78 companies visited and 100+ students placed. Key learning: designing for institutions means your work represents real stakes — it shapes how the entire college is perceived by companies.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 2: CHRONICLES -->
+  <div class="pcard fade">
+    <div class="proj-header">
+      <div class="proj-num-badge">02</div>
+      <div style="flex:1;">
+        <div class="ptitle">Chronicles — MBIT Annual Report Design</div>
+        <p class="pdesc">As Publication Head Coordinator, I designed MBIT's Chronicles annual report end-to-end — layout architecture, typographic system, editorial design, image curation, and print-ready production for Academic Year 2025–26.</p>
+        <div class="pmeta">
+          <span class="mc">Publication Design</span><span class="mc">Editorial Layout</span><span class="mc">Typography</span><span class="mc">Print Design</span><span class="mc">Canva · Figma</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery-label">Annual Report Design — Click to enlarge</div>
+      <div class="gallery-grid g2">
+        <img class="gimg gimg-tall" src="img_annual26.jpg" alt="MBIT Annual Report 2025-26 Cover" onclick="openLB(this.src)">
+        <img class="gimg gimg-tall" src="img_events.jpg" alt="Annual Report Events Page" onclick="openLB(this.src)">
+      </div>
+    </div>
+    <div class="pdf-row">
+      <a href="annual_report_2024_25.pdf" class="pdf-btn" target="_blank">
+        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        View Annual Report 2024–25 (PDF)
+      </a>
+    </div>
+    <button class="rmb" id="b2" onclick="tc('e2','b2')">Read full case study <span class="ar">↓</span></button>
+    <div class="cexp" id="e2">
+      <div class="cin">
+        <div class="cstep"><div class="csl">The Challenge</div><p>The annual report needed to capture a full year of college life — events, achievements, placements, cultural activities — in a visually engaging format meaningful to students, faculty, and alumni across multiple content types and tones.</p></div>
+        <div class="cstep"><div class="csl">My Approach</div><p>Started with information architecture — which sections exist, in what order, how much visual weight each deserves. Designed a modular page template system (cover, section openers, content spreads, photo layouts) so the editorial team could fill pages consistently.</p></div>
+        <div class="cstep"><div class="csl">Design Decisions</div><p>Chose a clean editorial style: strong heading hierarchy, readable body text, generous margins, structured grid. Used accent color strategically to differentiate sections. I also served as a student editor on the Editorial Board, credited in the annual report alongside faculty.</p></div>
+        <div class="cstep"><div class="csl">Outcome &amp; Learnings</div><p>Delivered a complete, print-ready annual report on schedule. Biggest learning: publication design requires thinking in systems — one good template multiplies efficiency. Being on the Editorial Board meant I understood both the content and the design, making the result more cohesive.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT 3: MARGDARSHAN -->
+  <div class="pcard fade">
+    <div class="proj-header">
+      <div class="proj-num-badge">03</div>
+      <div style="flex:1;">
+        <div class="ptitle">Margdarshan 2026 — Career Event Branding</div>
+        <p class="pdesc">As Design Coordinator, I created the complete visual identity for Margdarshan — TPC's flagship career guidance and mentorship event held at GCET Auditorium on 14th March 2026, organised across ADIT, CVM, GCET, and MBIT colleges.</p>
+        <div class="pmeta">
+          <span class="mc">Event Branding</span><span class="mc">Canva</span><span class="mc">Digital + Print</span><span class="mc">Identity Design</span><span class="mc">Multi-college Event</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery">
+      <div class="gallery-label">Event Design — Click to enlarge</div>
+      <div class="gallery-grid g2">
+        <img class="gimg gimg-tall" src="img_marg_banner.jpg" alt="Margdarshan 2026 Inauguration Banner" onclick="openLB(this.src)">
+        <img class="gimg gimg-tall" src="img_marg_flyer.jpg" alt="Margdarshan 2026 Event Flyer" onclick="openLB(this.src)">
+      </div>
+    </div>
+    <button class="rmb" id="b3" onclick="tc('e3','b3')">Read full case study <span class="ar">↓</span></button>
+    <div class="cexp" id="e3">
+      <div class="cin">
+        <div class="cstep"><div class="csl">The Challenge</div><p>Margdarshan 2026 was a multi-college event involving ADIT, CVM University, GCET, and MBIT. The visual identity needed to feel inclusive of all four institutions while having a strong, distinct event presence that worked across WhatsApp, Instagram, printed standees, and on-stage backdrops simultaneously.</p></div>
+        <div class="cstep"><div class="csl">My Approach</div><p>Defined the event color palette (deep royal blue + gold — conveying aspiration and prestige) and typography first. Created the Margdarshnam wordmark in Devanagari script for authenticity. Then adapted the core identity to each format — flyer, banner, digital post — adjusting hierarchy for how each touchpoint is consumed.</p></div>
+        <div class="cstep"><div class="csl">Design Decisions</div><p>The bold Devanagari headline was a deliberate choice — it created a cultural, rooted identity that stood out from generic English-only event branding. Gold accents on deep blue communicated seriousness and celebration simultaneously. Print pieces kept text minimal for instant readability at distance.</p></div>
+        <div class="cstep"><div class="csl">Outcome &amp; Learnings</div><p>The event had strong student turnout from all four colleges and received positive feedback on its visual presentation. The banner and flyer were both shared widely on social media. Key learning: for a multi-college event, the design must feel neutral enough to represent everyone, yet distinctive enough to be memorable.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="rdiv"><div class="rd-line"></div><div class="rd-icon">✦</div><div class="rd-line"></div></div>
+<div class="sec" id="process">
+  <div class="slabel fade">How I Work</div>
+  <h2 class="sh fade">My Design <em>Process</em></h2>
+  <p class="ssub fade" style="max-width:500px;">Every great design starts with understanding — not software.</p>
+  <div class="process-grid">
+    <div class="pstep fade"><div class="pstep-num">01</div><div class="pstep-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A90C4" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div><div class="pstep-title">Discover</div><p class="pstep-desc">Understand the brief, audience, and goals before touching any tool.</p></div>
+    <div class="pstep fade"><div class="pstep-num">02</div><div class="pstep-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A90C4" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div><div class="pstep-title">Define</div><p class="pstep-desc">Set the visual language — colors, type, hierarchy, and layout rules.</p></div>
+    <div class="pstep fade"><div class="pstep-num">03</div><div class="pstep-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A90C4" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div class="pstep-title">Design</div><p class="pstep-desc">Build in Figma or Canva with precision, iteration, and purpose.</p></div>
+    <div class="pstep fade"><div class="pstep-num">04</div><div class="pstep-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A90C4" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="pstep-title">Deliver</div><p class="pstep-desc">Hand off polished, production-ready assets on time, every time.</p></div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="rdiv"><div class="rd-line"></div><div class="rd-icon">✦</div><div class="rd-line"></div></div>
+<div class="sec" id="skills">
+  <div class="slabel fade">Expertise</div>
+  <h2 class="sh fade">Skills &amp; <em>Proficiency</em></h2>
+  <div class="sk2col fade" id="skillBars">
+    <div>
+      <div class="sk-row"><div class="sk-hd"><span class="sk-nm">Canva</span><span class="sk-pc">92%</span></div><div class="sk-bg"><div class="sk-fill" data-w="92"></div></div></div>
+      <div class="sk-row"><div class="sk-hd"><span class="sk-nm">Visual UI Design</span><span class="sk-pc">80%</span></div><div class="sk-bg"><div class="sk-fill" data-w="80"></div></div></div>
+      <div class="sk-row"><div class="sk-hd"><span class="sk-nm">Figma</span><span class="sk-pc">72%</span></div><div class="sk-bg"><div class="sk-fill" data-w="72"></div></div></div>
+    </div>
+    <div>
+      <div class="sk-row"><div class="sk-hd"><span class="sk-nm">Publication Design</span><span class="sk-pc">78%</span></div><div class="sk-bg"><div class="sk-fill" data-w="78"></div></div></div>
+      <div class="sk-row"><div class="sk-hd"><span class="sk-nm">Event &amp; Brand Identity</span><span class="sk-pc">75%</span></div><div class="sk-bg"><div class="sk-fill" data-w="75"></div></div></div>
+      <div class="sk-row"><div class="sk-hd"><span class="sk-nm">Wireframing &amp; Prototyping</span><span class="sk-pc">65%</span></div><div class="sk-bg"><div class="sk-fill" data-w="65"></div></div></div>
+    </div>
+  </div>
+  <div class="tools-sec fade">
+    <div class="tools-lbl">Primary Tools</div>
+    <div class="tools-row">
+      <div class="tool-card"><div class="ti" style="background:#1E1E1E;color:#A259FF;">F</div><div><div class="tn">Figma</div><div class="ts">UI Design · Prototyping · Wireframing</div></div></div>
+      <div class="tool-card"><div class="ti" style="background:#00C4CC;color:#fff;font-size:.6rem;">Ca</div><div><div class="tn">Canva</div><div class="ts">Visual Design · Publications · Branding</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="rdiv"><div class="rd-line"></div><div class="rd-icon">✦</div><div class="rd-line"></div></div>
+<div class="sec" id="awards">
+  <div class="slabel fade">Highlights</div>
+  <h2 class="sh fade">Achievements &amp; <em>Impact</em></h2>
+  <div class="awards-grid">
+    <div class="award-card fade"><div class="award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A90C4" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="award-title">Design Head · TPC</div><p class="award-sub">Led all placement visual communication for a full academic year at MBIT — 78 companies visited.</p></div>
+    <div class="award-card fade"><div class="award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A90C4" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="award-title">Chronicles Editorial Board</div><p class="award-sub">Credited student member of MBIT's Annual Report Editorial Board — designed end-to-end.</p></div>
+    <div class="award-card fade"><div class="award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A90C4" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="award-title">MBIT Design Team</div><p class="award-sub">Coordinated the college-wide design team across multiple departments and simultaneous events.</p></div>
+    <div class="award-card fade"><div class="award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A90C4" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="award-title">Margdarshan 2026</div><p class="award-sub">Designed branding for a 4-college career event — digital, print, stage backdrops — all cohesive.</p></div>
+    <div class="award-card fade"><div class="award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A90C4" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="award-title">4 Roles Simultaneously</div><p class="award-sub">Managed design leadership across 4 active roles — demonstrating exceptional multitasking and commitment.</p></div>
+    <div class="award-card fade"><div class="award-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4A90C4" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="award-title">Zero Missed Deadlines</div><p class="award-sub">Delivered every design project, event, and publication on time throughout the entire year.</p></div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="rdiv"><div class="rd-line"></div><div class="rd-icon">✦</div><div class="rd-line"></div></div>
+<div class="testi-bg" id="testi">
+  <div class="testi-inner">
+    <div class="slabel fade">Kind Words</div>
+    <h2 class="sh fade">What People <em>Say</em></h2>
+    <div class="testi-grid">
+      <div class="tcard fade"><div class="tstar"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tquote">Kritika has a natural eye for clean, balanced design. Her Canva work is always polished and on-brand — she clearly thinks about the end user before touching any tool.</p><div class="tauthor"><div class="tav">AC</div><div><div class="tname">Mrs. Ankita Chauhan</div><div class="trole">Mentor · Design Community</div></div></div></div>
+      <div class="tcard fade"><div class="tstar"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tquote">Her attention to consistency and brand identity is impressive. She led the design team with calm confidence and always delivered on time — a genuine asset to any team.</p><div class="tauthor"><div class="tav">JD</div><div><div class="tname">Dr. Jayna Donga</div><div class="trole">T&amp;P Officer · MBIT</div></div></div></div>
+      <div class="tcard fade"><div class="tstar"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tquote">Working with Kritika on a design project was a great experience. She asks the right questions before opening any software — that kind of thinking is rare and valuable.</p><div class="tauthor"><div class="tav">AC</div><div><div class="tname">Akshita Champaneri</div><div class="trole">Classmate &amp; Collaborator</div></div></div></div>
+      <div class="tcard fade"><div class="tstar"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="tquote">Kritika redesigned our event materials and the difference was immediately visible. She understands visual hierarchy in a way that feels mature for someone early in their career.</p><div class="tauthor"><div class="tav">MR</div><div><div class="tname">Mr. Mihir Rajyaguru</div><div class="trole">Event Organiser · MBIT</div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div style="padding:0 2.5rem;">
+  <div class="cta-banner fade">
+    <h2 class="cta-h">Let's create something <em>beautiful</em> together</h2>
+    <p class="cta-p">I'm currently open to internships, freelance projects, and full-time UI/UX design roles.</p>
+    <div class="cta-btns">
+      <a href="mailto:kritika1265@gmail.com" class="cta-bw">Send Me an Email</a>
+      <a href="https://www.linkedin.com/in/kritika-singh-3106aa300/" target="_blank" class="cta-bo">View LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="rdiv" style="padding-top:3rem;"><div class="rd-line"></div><div class="rd-icon">✦</div><div class="rd-line"></div></div>
+<div class="sec" id="contact">
+  <div class="slabel fade">Let's Talk</div>
+  <div class="cg">
+    <div class="fade">
+      <h2 class="sh">Open to new<br><em>opportunities</em></h2>
+      <p class="ssub" style="margin-top:.9rem;">Looking for a designer with real institutional experience, strong visual communication, and genuine passion for purposeful design? I'm open to internships, freelance, and full-time roles.</p>
+      <div class="cl-links">
+        <a href="mailto:kritika1265@gmail.com" class="cl"><div class="cl-ic">✉</div><div><strong>Email</strong><span>kritika1265@gmail.com</span></div></a>
+        <a href="https://www.linkedin.com/in/kritika-singh-3106aa300/" target="_blank" class="cl"><div class="cl-ic" style="font-weight:700;font-size:.7rem;">in</div><div><strong>LinkedIn</strong><span>Kritika Singh</span></div></a>
+        <a href="mbit_achievement.pdf" target="_blank" class="cl cl-acc"><div class="cl-ic">↓</div><div><strong>Download Portfolio PDF</strong><span>MBIT Achievement Post</span></div></a>
+      </div>
+    </div>
+    <div class="fade">
+      <div class="fwrap">
+        <div class="fl"><label>Your Name</label><input type="text" placeholder="Riya Sharma"></div>
+        <div class="fl"><label>Email</label><input type="email" placeholder="riya@company.com"></div>
+        <div class="fl"><label>Message</label><textarea placeholder="Tell me about your project or opportunity..."></textarea></div>
+        <button class="bp" style="border-radius:10px;width:100%;border:none;cursor:pointer;padding:.9rem;" onclick="document.getElementById('fsuc').style.display='block'">Send Message</button>
+        <div id="fsuc" style="display:none;text-align:center;font-size:.82rem;color:var(--a1);padding:.5rem;font-weight:600;">Message sent! Kritika will reply within 24 hours.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-wrap">
+  <div class="footer-top">
+    <a href="#hero" class="footer-logo">Kritika<span>.</span></a>
+    <div class="footer-nav">
+      <a href="#about">About</a><a href="#exp">Experience</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="fc">© 2026 Kritika Singh · Crafted with <span>♥</span> in Anand, Gujarat</div>
+    <div class="footer-socials">
+      <a href="mailto:kritika1265@gmail.com" class="fsoc">✉</a>
+      <a href="https://www.linkedin.com/in/kritika-singh-3106aa300/" target="_blank" class="fsoc" style="font-size:.62rem;font-weight:700;">in</a>
+    </div>
+  </div>
+</div>
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+<script>
+function tc(id,btn){
+  document.getElementById(id).classList.toggle('op');
+  document.getElementById(btn).classList.toggle('op');
+}
+function openLB(src){
+  document.getElementById('lb-img').src=src;
+  document.getElementById('lightbox').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lightbox').classList.remove('show');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('progress-bar').style.width=(s/h*100)+'%';
+  const b=document.getElementById('btt');
+  s>400?b.classList.add('show'):b.classList.remove('show');
+});
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('v');
+      if(e.target.id==='skillBars'||e.target.id==='hskills'){
+        setTimeout(()=>{e.target.querySelectorAll('[data-w]').forEach(b=>{b.style.width=b.dataset.w+'%';});},250);
+      }
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+['skillBars','hskills'].forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el);});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    document.getElementById('mob').classList.remove('open');
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>
